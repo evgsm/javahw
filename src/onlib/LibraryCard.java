@@ -5,13 +5,13 @@ import java.util.UUID;
 
 public class LibraryCard {
     private final User user;
-    private final Date createDay;
+    private final Date createDate;
     private Bookcase bookcase;
     private final UUID uuid;
 
-    public Account(User user){
+    public LibraryCard(User user){
         this.user = user;
-        accCreateDay = new Date();
+        createDate = new Date();
         uuid = UUID.randomUUID();
     }
 

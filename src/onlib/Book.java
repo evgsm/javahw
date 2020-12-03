@@ -1,5 +1,8 @@
 package onlib;
 
+import java.util.zip.CRC32;
+import java.util.UUID;
+
 public class Book {
     private final String author;
     private final String name;
@@ -8,6 +11,7 @@ public class Book {
     private final int year;
     private final int pages;
     private final String isbn;
+    private final UUID uuid;
 
     Book(String author, String name, String city, String publisher, int year, int pages, String isbn){
         this.author = author;
@@ -17,6 +21,7 @@ public class Book {
         this.year = year;
         this.pages = pages;
         this.isbn = isbn;
+        this.uuid = UUID.randomUUID();
     }
 
     public String getAuthor() { return author; }
@@ -28,17 +33,29 @@ public class Book {
     public String getIsbn() { return isbn; }
 
     public boolean equals(Book book) {
-        if (	(this.author.equals(book.getAuthor()) == true) &&
-                (this.name.equals(book.getName()) == true) &&
-                (this.city.equals(book.getCity()) == true) &&
-                (this.publisher.equals(book.getPublisher()) == true) &&
-                (this.pages == book.getPages()) &&
-                (this.year == book.getYear()))
+        if (this == null)
+            return false;
+        else if (this == book)
+            return true;
+        else if (   this.author.equals(book.getAuthor()) == true &&
+                    this.name.equals(book.getName()) == true &&
+                    this.city.equals(book.getCity()) == true &&
+                    this.publisher.equals(book.getPublisher()) == true &&
+                    this.pages == book.getPages() &&
+                    this.year == book.getYear() &&
+                    this.isbn.equals(book.getIsbn())    )
         {
             return true;
         }
         else
             return false;
+    }
+    public int hashCode() {
+        StringBuilder str = new StringBuilder();
+        str.append(author).append(name).append(city).append(publisher).append(year).append(pages).append(isbn);
+        CRC32 crc = new CRC32();
+        crc.update(str.toString().getBytes());
+        return (int)crc.getValue();
     }
 
     public String toString() {
