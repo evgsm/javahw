@@ -13,6 +13,8 @@ public class Book {
     private final String isbn;
     private final UUID uuid;
 
+    private final int hash;
+
     Book(String author, String name, String city, String publisher, int year, int pages, String isbn){
         this.author = author;
         this.name = name;
@@ -22,6 +24,13 @@ public class Book {
         this.pages = pages;
         this.isbn = isbn;
         this.uuid = UUID.randomUUID();
+
+        // Calculate hash
+        StringBuilder str = new StringBuilder();
+        str.append(author).append(name).append(city).append(publisher).append(year).append(pages).append(isbn);
+        CRC32 crc = new CRC32();
+        crc.update(str.toString().getBytes());
+        this.hash = (int)crc.getValue();
     }
 
     public String getAuthor() { return author; }
@@ -51,11 +60,7 @@ public class Book {
             return false;
     }
     public int hashCode() {
-        StringBuilder str = new StringBuilder();
-        str.append(author).append(name).append(city).append(publisher).append(year).append(pages).append(isbn);
-        CRC32 crc = new CRC32();
-        crc.update(str.toString().getBytes());
-        return (int)crc.getValue();
+        return hash;
     }
 
     public String toString() {

@@ -58,8 +58,8 @@ public class User {
 
     public String toString(){
         return String.format(
-                "Полное имя: %s %s %s\nДата рождения: %s\nСтрана: %s\nUUID: %s",
-                familyName, firstName, secondName, birthDate.toString(), country, uuid.toString());
+                "Полное имя: %s %s %s\nДата рождения: %s\nСтрана: %s\n",
+                familyName, firstName, secondName, birthDate.toString(), country);
     }
 
 }
