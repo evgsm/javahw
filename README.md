@@ -17,6 +17,6 @@
 3) Третий пункт нумерованного списка
 
 **Изображение космонавта на астероиде (жирным)**
-![astro](d:\downloads\astronavt_na_fone_zemli-1920x1440.jpg)
+![astro](https://images.hdqwalls.com/download/astronaut-imagination-76-2560x1440.jpg)
 
 [Газета "Взгляд"](https://vz.ru)
